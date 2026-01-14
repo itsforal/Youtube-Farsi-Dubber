@@ -1,0 +1,6 @@
+yt-dlp
+edge-tts
+faster-whisper
+deep-translator
+pydub
+nest_asyncio
