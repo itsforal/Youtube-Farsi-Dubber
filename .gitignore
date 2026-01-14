@@ -1,9 +1,17 @@
+# Ignore python cache
 __pycache__/
 *.pyc
-.env
+
+# Ignore virtual environments
 venv/
-Farsi_Dubbed_Output/
-output/
+env/
+
+# Ignore media files (Important for copyright safety)
+*.mp4
 *.mp3
-*.txt
-.DS_Store
+*.wav
+*.mkv
+
+# Ignore temp folders
+temp_files/
+Farsi_Dubbed_Output/
