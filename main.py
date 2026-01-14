@@ -1,9 +1,4 @@
----
 
-### 4️⃣ File: `main.py`
-Here is the final, clean Python code with **English comments**.
-
-```python
 import os
 import logging
 import asyncio
