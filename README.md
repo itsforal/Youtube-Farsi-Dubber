@@ -1,20 +1,13 @@
-# 🎥 AutoDubber: AI YouTube Video Dubbing Tool
+# 🎥 AutoDubber: Automated Video Translation Pipeline
 
-An automated tool that downloads YouTube videos (or playlists), transcribes the audio using OpenAI's Whisper, translates it, generates voiceovers using Edge TTS, and synchronizes the new audio with the original video.
+An experimental Python utility designed to automate the dubbing workflow for educational videos. It integrates **OpenAI Whisper** for transcription and **Edge TTS** for voice synthesis to create bilingual audio overlays.
 
-## 🚀 Features
-- **Playlist Support:** Automatically processes all videos in a YouTube playlist.
-- **Hybrid Voice Logic:** Uses English voice for math/technical terms and Farsi voice for explanations.
-- **Auto Sync:** Adjusts speech speed to match the original video timing.
-- **Resume Capability:** Skips videos that trigger errors and moves to the next.
+## Key Features
+- **Batch Processing:** Iterates through YouTube playlists to process multiple videos sequentially.
+- **Context-Aware Voice Switching:** Alternates between English (for technical/math terms) and Farsi (for explanations) to preserve scientific accuracy.
+- **Temporal Alignment:** Dynamically adjusts the speed (tempo) of the generated audio to match the original video segments.
+- **Error Handling:** Implements logic to skip corrupted streams and resume processing automatically.
 
-## 🛠 Prerequisites
+## Prerequisites
 1. **Python 3.8+**
-2. **FFmpeg:** Must be installed and added to your system PATH. [Download Here](https://ffmpeg.org/download.html).
-
-## 📦 Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/AutoDubber.git
-   cd AutoDubber
+2. **FFmpeg:** Required for audio extraction and merging operations. [Download Here](https://ffmpeg.org/download.html).
