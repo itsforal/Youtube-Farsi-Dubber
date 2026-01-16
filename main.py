@@ -19,7 +19,7 @@ nest_asyncio.apply()
 #              CONFIGURATION
 # ==========================================
 
-# 🔴 INSERT YOUR YOUTUBE PLAYLIST OR VIDEO LINK HERE
+# INSERT YOUR YOUTUBE PLAYLIST OR VIDEO LINK HERE
 TARGET_PLAYLIST_URL = "" 
 
 # Destination directory for the final videos
@@ -108,7 +108,7 @@ class YouTubeToFarsiDub:
         """
         Downloads the video using yt-dlp.
         """
-        logger.info(f"📥 Downloading video...")
+        logger.info(f" Downloading video...")
         output_path = self.work_dir / 'original_video.mp4'
         
         ydl_opts = {
@@ -131,7 +131,7 @@ class YouTubeToFarsiDub:
         """
         Extracts audio, transcribes it, translates it, and determines the best voice.
         """
-        logger.info("🎙️ Extracting and Transcribing...")
+        logger.info(" Extracting and Transcribing...")
         
         # Extract audio to a temp file
         audio_temp = self.temp_dir / "temp_audio.mp3"
@@ -143,7 +143,7 @@ class YouTubeToFarsiDub:
         segments, _ = self.model.transcribe(str(audio_temp), beam_size=5, language="en", vad_filter=True)
 
         processed_segments = []
-        logger.info("🌍 Translating segments...")
+        logger.info(" Translating segments...")
 
         for i, segment in enumerate(segments):
             original_text = self.clean_text(segment.text)
@@ -227,7 +227,7 @@ class YouTubeToFarsiDub:
         output_filename = f"{self.video_title}_FARSI_DUBBED.mp4"
         final_path = self.work_dir / output_filename
         
-        # FFmpeg command: Replace audio stream without re-encoding video stream
+        # Replace audio stream without re-encoding video stream
         cmd = (
             f'ffmpeg -y -i "{video_path}" -i "{farsi_audio_path}" '
             f'-c:v copy -map 0:v:0 -map 1:a:0 '
@@ -275,11 +275,11 @@ async def process_playlist():
         return
 
     # 1. Load Whisper Model ONCE
-    logger.info("⚙️ Loading Whisper Model (Medium)...")
+    logger.info(" Loading Whisper Model (Medium)...")
     shared_model = WhisperModel(MODEL_SIZE, device="cpu", compute_type="int8")
     
     # 2. Extract Playlist URLs
-    logger.info(f"📋 Extracting videos from playlist...")
+    logger.info(f" Extracting videos from playlist...")
     ydl_opts = {
         'extract_flat': True,
         'quiet': True,
@@ -298,8 +298,8 @@ async def process_playlist():
     # 3. Loop through videos
     for index, url in enumerate(video_urls):
         logger.info(f"\n{'='*40}")
-        logger.info(f"▶️ Processing Video {index + 1}/{total_videos}")
-        logger.info(f"🔗 URL: {url}")
+        logger.info(f" Processing Video {index + 1}/{total_videos}")
+        logger.info(f" URL: {url}")
         logger.info(f"{'='*40}\n")
         
         try:
